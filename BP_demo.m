@@ -5,7 +5,7 @@ y1=sin((1/2)*pi*x)+sin(pi*x);%期望输出
  
 %step1:newff前馈网络创建函数
 %minmax(x)获取输入x的取值范围，min和max，第一个隐藏层其实相当于对输入进行归一化
-%第1个隐藏层含1个神经元，激活函数是tansig,第2个隐藏层含15个，激活函数是tansig,输出层含1个,激活函数是线性函数
+%第1个隐藏层含1个神经元，激活函数是tansig,第2个隐藏层含15个，激活函数是tansig,输出层含1个,激活函数是purelin
 %训练函数是梯度下降函数traingd
 net=newff(minmax(x),[1,15,1],{'tansig','tansig','purelin'},'traingd'); 
 net.trainparam.epochs=6000; %设置最大迭代次数
@@ -17,3 +17,4 @@ y2=sim(net,x); %step3:获取BP训练后的实际输出
 %Pause  %绘图，原图（蓝色光滑线）和仿真效果图（红色+号点线） 
 plot(x,y1);%画出期望图像 
 hold on 
+plot(x,y2,'r+');
